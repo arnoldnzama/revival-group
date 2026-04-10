@@ -7,39 +7,67 @@ function getCurrentPage() {
 function renderHeader() {
   const page = getCurrentPage();
   const links = [
-    { href: 'index.html',     label: 'Accueil' },
-    { href: 'solutions.html', label: 'Solutions' },
-    { href: 'about.html',     label: 'À propos' },
-    { href: 'careers.html',   label: 'Carrière' },
-    { href: 'products.html',  label: 'Produits' },
-    { href: 'portfolio.html', label: 'Portfolio' },
-    { href: 'contact.html',   label: 'Contact' },
+    { href: 'index.html',     label: 'Accueil',    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>' },
+    { href: 'solutions.html', label: 'Solutions',  icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>' },
+    { href: 'about.html',     label: 'À propos',   icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>' },
+    { href: 'careers.html',   label: 'Carrière',   icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>' },
+    { href: 'products.html',  label: 'Produits',   icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>' },
+    { href: 'portfolio.html', label: 'Portfolio',  icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>' },
+    { href: 'contact.html',   label: 'Contact',    icon: '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' },
   ];
 
   const navItems = links.map(l =>
-    `<a href="${l.href}" class="nav__link${page === l.href ? ' nav__link--active' : ''}">${l.label}</a>`
+    `<a href="${l.href}" class="nav__link${page === l.href ? ' nav__link--active' : ''}">
+      <span class="nav__link-icon">${l.icon}</span>
+      <span class="nav__link-label">${l.label}</span>
+    </a>`
   ).join('');
 
   document.getElementById('header-placeholder').innerHTML = `
     <header class="header" id="header">
       <div class="container header__inner">
         <a href="index.html" class="logo">
-          <img src="logo/logo.png" alt="TechCorp" class="logo__img" />
+          <img src="logo/logo.png" alt="Revival" class="logo__img" />
         </a>
-        <nav class="nav" id="nav">
-          <div class="nav__mobile-logo">
+        <nav class="nav" id="nav" role="navigation" aria-label="Navigation principale">
+          <div class="nav__mobile-header">
             <a href="index.html" class="logo">
               <img src="logo/logo.png" alt="Revival" class="logo__img" />
             </a>
+            <button class="nav__close" id="navClose" aria-label="Fermer le menu">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
           </div>
-          ${navItems}
-          <div class="lang-switcher" id="langSwitcher">
-            <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+          <div class="nav__links-group">
+            ${navItems}
+          </div>
+          <div class="nav__mobile-footer">
+            <div class="lang-switcher" id="langSwitcher">
+              <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <span id="langCurrent">FR</span>
+                <svg class="lang-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+              </button>
+              <div class="lang-dropdown" id="langDropdown">
+                <button class="lang-option lang-option--active" data-lang="fr">
+                  <span class="lang-flag">🇫🇷</span> Français
+                </button>
+                <button class="lang-option" data-lang="en">
+                  <span class="lang-flag">🇬🇧</span> English
+                </button>
+              </div>
+            </div>
+            <a href="contact.html" class="nav__cta-btn">Consultation gratuite →</a>
+          </div>
+        </nav>
+        <div class="header__right">
+          <div class="lang-switcher lang-switcher--desktop" id="langSwitcherDesktop">
+            <button class="lang-btn" id="langBtnDesktop" aria-haspopup="true" aria-expanded="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-              <span id="langCurrent">FR</span>
+              <span id="langCurrentDesktop">FR</span>
               <svg class="lang-chevron" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </button>
-            <div class="lang-dropdown" id="langDropdown">
+            <div class="lang-dropdown" id="langDropdownDesktop">
               <button class="lang-option lang-option--active" data-lang="fr">
                 <span class="lang-flag">🇫🇷</span> Français
               </button>
@@ -48,52 +76,97 @@ function renderHeader() {
               </button>
             </div>
           </div>
-        </nav>
-        <button class="burger" id="burger" aria-label="Menu">
-          <span></span><span></span><span></span>
-        </button>
+          <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
       </div>
-    </header>`;
+    </header>
+    <div class="nav-overlay" id="navOverlay"></div>`;
 
-  // sticky + burger
+  // sticky
   const header = document.getElementById('header');
-  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50));
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 50), { passive: true });
 
-  const burger = document.getElementById('burger');
-  const nav    = document.getElementById('nav');
-  burger.addEventListener('click', () => {
-    nav.classList.toggle('open');
-    burger.classList.toggle('active');
-  });
-  nav.querySelectorAll('.nav__link').forEach(l =>
-    l.addEventListener('click', () => { nav.classList.remove('open'); burger.classList.remove('active'); })
-  );
-  // lang switcher
+  // burger + overlay
+  const burger   = document.getElementById('burger');
+  const nav      = document.getElementById('nav');
+  const overlay  = document.getElementById('navOverlay');
+  const navClose = document.getElementById('navClose');
+
+  function openNav() {
+    nav.classList.add('open');
+    burger.classList.add('active');
+    burger.setAttribute('aria-expanded', 'true');
+    overlay.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    nav.classList.remove('open');
+    burger.classList.remove('active');
+    burger.setAttribute('aria-expanded', 'false');
+    overlay.classList.remove('visible');
+    document.body.style.overflow = '';
+  }
+
+  burger.addEventListener('click', () => nav.classList.contains('open') ? closeNav() : openNav());
+  navClose && navClose.addEventListener('click', closeNav);
+  overlay && overlay.addEventListener('click', closeNav);
+
+  nav.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', closeNav));
+
+  // Escape key closes nav
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeNav(); });
+
+  // ── Lang switcher mobile (inside drawer) ──
   const langBtn      = document.getElementById('langBtn');
   const langDropdown = document.getElementById('langDropdown');
   const langCurrent  = document.getElementById('langCurrent');
 
-  langBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const open = langDropdown.classList.toggle('open');
-    langBtn.setAttribute('aria-expanded', open);
-  });
-
-  document.addEventListener('click', () => {
-    langDropdown.classList.remove('open');
-    langBtn.setAttribute('aria-expanded', false);
-  });
-
-  langDropdown.querySelectorAll('.lang-option').forEach(opt => {
-    opt.addEventListener('click', (e) => {
+  if (langBtn && langDropdown) {
+    langBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      langDropdown.querySelectorAll('.lang-option').forEach(o => o.classList.remove('lang-option--active'));
-      opt.classList.add('lang-option--active');
-      langCurrent.textContent = opt.dataset.lang.toUpperCase();
-      langDropdown.classList.remove('open');
-      langBtn.setAttribute('aria-expanded', false);
+      const open = langDropdown.classList.toggle('open');
+      langBtn.setAttribute('aria-expanded', open);
     });
-  });
+    langDropdown.querySelectorAll('.lang-option').forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdown.querySelectorAll('.lang-option').forEach(o => o.classList.remove('lang-option--active'));
+        opt.classList.add('lang-option--active');
+        langCurrent.textContent = opt.dataset.lang.toUpperCase();
+        langDropdown.classList.remove('open');
+        langBtn.setAttribute('aria-expanded', false);
+      });
+    });
+  }
+
+  // ── Lang switcher desktop ──
+  const langBtnD      = document.getElementById('langBtnDesktop');
+  const langDropdownD = document.getElementById('langDropdownDesktop');
+  const langCurrentD  = document.getElementById('langCurrentDesktop');
+
+  if (langBtnD && langDropdownD) {
+    langBtnD.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const open = langDropdownD.classList.toggle('open');
+      langBtnD.setAttribute('aria-expanded', open);
+    });
+    document.addEventListener('click', () => {
+      langDropdownD.classList.remove('open');
+      langBtnD.setAttribute('aria-expanded', false);
+    });
+    langDropdownD.querySelectorAll('.lang-option').forEach(opt => {
+      opt.addEventListener('click', (e) => {
+        e.stopPropagation();
+        langDropdownD.querySelectorAll('.lang-option').forEach(o => o.classList.remove('lang-option--active'));
+        opt.classList.add('lang-option--active');
+        langCurrentD.textContent = opt.dataset.lang.toUpperCase();
+        langDropdownD.classList.remove('open');
+        langBtnD.setAttribute('aria-expanded', false);
+      });
+    });
+  }
 }
 
 function renderFooter() {

@@ -87,6 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.fade-up').forEach(el => revealObserver.observe(el));
 
+  // ── SCROLL REVEAL — slide-in-left / right / scale-in ──
+  const slideObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        slideObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.slide-in-left, .slide-in-right, .scale-in').forEach(el => slideObserver.observe(el));
+
   // ── STAGGER CHILDREN — cards, list items ──
   const staggerObserver = new IntersectionObserver((entries) => {
     entries.forEach(e => {

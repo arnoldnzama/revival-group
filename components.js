@@ -7,6 +7,7 @@ function getCurrentPage() {
 function renderHeader() {
   const page = getCurrentPage();
   const links = [
+    { href: 'index.html',     label: 'Accueil' },
     { href: 'solutions.html', label: 'Solutions' },
     { href: 'about.html',     label: 'À propos' },
     { href: 'careers.html',   label: 'Carrière' },
@@ -26,6 +27,11 @@ function renderHeader() {
           <img src="logo/logo.png" alt="TechCorp" class="logo__img" />
         </a>
         <nav class="nav" id="nav">
+          <div class="nav__mobile-logo">
+            <a href="index.html" class="logo">
+              <img src="logo/logo.png" alt="Revival" class="logo__img" />
+            </a>
+          </div>
           ${navItems}
           <div class="lang-switcher" id="langSwitcher">
             <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
@@ -62,7 +68,6 @@ function renderHeader() {
   nav.querySelectorAll('.nav__link').forEach(l =>
     l.addEventListener('click', () => { nav.classList.remove('open'); burger.classList.remove('active'); })
   );
-
   // lang switcher
   const langBtn      = document.getElementById('langBtn');
   const langDropdown = document.getElementById('langDropdown');
@@ -148,6 +153,23 @@ function renderFooter() {
     </footer>`;
 }
 
+function renderScrollTop() {
+  const btn = document.createElement('button');
+  btn.id = 'scrollTopBtn';
+  btn.className = 'scroll-top-btn';
+  btn.setAttribute('aria-label', 'Retour en haut');
+  btn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>`;
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
 function initAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -158,5 +180,6 @@ function initAnimations() {
 document.addEventListener('DOMContentLoaded', () => {
   renderHeader();
   renderFooter();
+  renderScrollTop();
   initAnimations();
 });

@@ -4,18 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ── TOP BAR CLOSE ──
-  const topbar = document.getElementById('topbar');
-  const topbarClose = document.getElementById('topbarClose');
-  if (topbar && topbarClose) {
-    topbarClose.addEventListener('click', () => {
-      topbar.classList.add('hidden');
-      document.body.classList.add('topbar-hidden');
-      const header = document.getElementById('header');
-      if (header) header.style.top = '0';
-    });
-  }
-
   // ── HERO SLIDER (yoyo) ──
   const heroSlides = document.querySelectorAll('.hero-slide');
   const heroDotsEl = document.getElementById('heroSliderDots');

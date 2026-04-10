@@ -129,10 +129,10 @@ img { max-width: 100%; display: block; }
 /* ===== HEADER ===== */
 .header {
   position: fixed;
-  top: 40px; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 20px 0;
-  transition: var(--transition), top .4s ease;
+  transition: var(--transition);
 }
 .header.scrolled {
   background: rgba(0,24,96,.97);
@@ -210,7 +210,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: 160px 0 80px;
+  padding: 120px 0 80px;
 }
 .hero__bg { position: absolute; inset: 0; pointer-events: none; }
 
@@ -2046,82 +2046,6 @@ img { max-width: 100%; display: block; }
   .follow-icon { width: 54px; height: 54px; border-radius: 14px; }
   .follow-icon svg { width: 24px; height: 24px; }
 }
-
-/* ===== TOP BAR ===== */
-.topbar {
-  background: linear-gradient(90deg, #035194 0%, #019cd6 50%, #035194 100%);
-  background-size: 200% 100%;
-  animation: topbarShimmer 4s linear infinite;
-  color: var(--white);
-  font-size: 13px;
-  font-weight: 500;
-  position: relative;
-  z-index: 1001;
-  overflow: hidden;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  transition: height .4s ease, opacity .4s ease;
-}
-.topbar.hidden {
-  height: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-@keyframes topbarShimmer {
-  0%   { background-position: 0% 0%; }
-  100% { background-position: 200% 0%; }
-}
-.topbar__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: 0 48px 0 16px;
-  overflow: hidden;
-  position: relative;
-}
-.topbar__marquee {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  white-space: nowrap;
-  animation: topbarScroll 28s linear infinite;
-}
-.topbar__marquee:hover { animation-play-state: paused; }
-@keyframes topbarScroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-.topbar__item { color: rgba(255,255,255,.92); }
-.topbar__item a { color: var(--white); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
-.topbar__item a:hover { color: var(--accent-cyan); }
-.topbar__sep { color: rgba(255,255,255,.35); font-size: 16px; }
-.topbar__close {
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(255,255,255,.15);
-  border: none;
-  color: var(--white);
-  width: 24px; height: 24px;
-  border-radius: 50%;
-  font-size: 16px;
-  line-height: 1;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background .2s;
-  flex-shrink: 0;
-}
-.topbar__close:hover { background: rgba(255,255,255,.3); }
-
-/* Push header down when topbar is visible */
-.header { top: 40px; }
-.topbar.hidden ~ #header-placeholder .header,
-body.topbar-hidden .header { top: 0; }
 
 /* ===== ECOSYSTEM LOGO ANIMATION ===== */
 .eco-logo-spin {

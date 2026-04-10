@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revival — Applications Performantes</title>
+  <link rel="icon" type="image/x-icon" href="ico/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════
+       TOP BAR
+  ═══════════════════════════════════════ -->
+  <div class="topbar" id="topbar">
+    <div class="topbar__inner">
+      <div class="topbar__marquee">
+        <span class="topbar__item">🚀 Consultation gratuite 30 min — <a href="contact.html">Réservez maintenant →</a></span>
+        <span class="topbar__sep">|</span>
+        <span class="topbar__item">✨ Nouveau : Solutions IA & Automatisation pour PME</span>
+        <span class="topbar__sep">|</span>
+        <span class="topbar__item">🌍 Clients dans 12 pays — <a href="portfolio.html">Voir nos réalisations →</a></span>
+        <span class="topbar__sep">|</span>
+        <span class="topbar__item">🚀 Consultation gratuite 30 min — <a href="contact.html">Réservez maintenant →</a></span>
+        <span class="topbar__sep">|</span>
+        <span class="topbar__item">✨ Nouveau : Solutions IA & Automatisation pour PME</span>
+        <span class="topbar__sep">|</span>
+        <span class="topbar__item">🌍 Clients dans 12 pays — <a href="portfolio.html">Voir nos réalisations →</a></span>
+      </div>
+      <button class="topbar__close" id="topbarClose" aria-label="Fermer">×</button>
+    </div>
+  </div>
+
+  <div id="header-placeholder"></div>
+
+  <!-- ═══════════════════════════════════════
+       HERO
+  ═══════════════════════════════════════ -->
+  <section class="hero" id="home">
+    <div class="hero__bg">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="blob blob--3"></div>
+      <div class="grid-lines"></div>
+    </div>
+    <div class="container hero__inner">
+      <div class="hero__content fade-up">
+        <h1 class="hero__title">
+          Renaitre, Créer, Impacter avec
+          <span class="gradient-text"> Confiance.</span>
+        </h1>
+        <p class="hero__desc">
+          Nous concevons et déployons des applications performantes pour aider les entreprises à automatiser leurs services, améliorer leur gestion et accélérer leur croissance.
+        </p>
+        <div class="hero__actions">
+          <a href="contact.html" class="btn btn--primary">
+            <span>Consultation gratuite 30min</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="portfolio.html" class="btn btn--ghost">Voir nos réalisations</a>
+        </div>
+        <div class="hero__trust">
+          <div class="trust-avatars">
+            <div class="ta" style="--c:#76d0ec"></div>
+            <div class="ta" style="--c:#38619c"></div>
+            <div class="ta" style="--c:#035194"></div>
+            <div class="ta" style="--c:#76d0ec"></div>
+            <div class="ta" style="--c:#38619c"></div>
+          </div>
+          <div class="trust-text">
+            <div class="trust-stars">★★★★★</div>
+            <span>6K+ clients satisfaits dans le monde</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__visual fade-up delay-2">
+        <div class="hero-slider">
+          <div class="hero-slider__track">
+            <div class="hero-slide active">
+              <img src="logo/banner.png" alt="Revival — Solution digitale" />
+            </div>
+            <div class="hero-slide">
+              <img src="logo/banner_1.png" alt="Revival — Solution digitale 1" />
+            </div>
+            <div class="hero-slide">
+              <img src="logo/banner_2.png" alt="Revival — Solution digitale 2" />
+            </div>
+            <div class="hero-slide">
+              <img src="logo/banner_3.png" alt="Revival — Solution digitale 3" />
+            </div>
+            <div class="hero-slide">
+              <img src="logo/banner_4.png" alt="Revival — Solution digitale 4" />
+            </div>
+            <div class="hero-slide">
+              <img src="logo/banner_5.png" alt="Revival — Solution digitale 5" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator"><div class="scroll-indicator__line"></div></div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       PORTFOLIO (carousel auto-scroll)
+  ═══════════════════════════════════════ -->
+  <section class="pf-carousel-section" id="portfolio">
+    <div class="container">
+      <div class="pf-carousel-header fade-up">
+        <div>
+          <span class="badge badge--dark">Dernières réalisations</span>
+          <h2 class="pf-carousel-title">Nos projets récents</h2>
+        </div>
+        <div class="pf-carousel-nav">
+          <button class="pf-nav-btn" id="pfPrev" aria-label="Précédent">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="pf-nav-btn" id="pfNext" aria-label="Suivant">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="pf-carousel-viewport fade-up">
+        <div class="pf-carousel-track" id="pfTrack">
+          <a href="portfolio.html" class="pf-carousel-card">
+            <div class="pf-carousel-card__img" style="background:url('projet/lank.png') center/cover no-repeat"></div>
+            <div class="pf-carousel-card__info">
+              <span class="pf-carousel-card__cat">WordPress Development</span>
+              <h4 class="pf-carousel-card__title">Michelmores – Law Firm Advisor Agency</h4>
+              <span class="pf-carousel-card__arrow">→</span>
+            </div>
+          </a>
+          <a href="portfolio.html" class="pf-carousel-card">
+            <div class="pf-carousel-card__img" style="background:url('projet/Match_Work.png') center/cover no-repeat"></div>
+            <div class="pf-carousel-card__info">
+              <span class="pf-carousel-card__cat">UI/UX Design</span>
+              <h4 class="pf-carousel-card__title">Exton Advisor – Law Firm Agency</h4>
+              <span class="pf-carousel-card__arrow">→</span>
+            </div>
+          </a>
+          <a href="portfolio.html" class="pf-carousel-card">
+            <div class="pf-carousel-card__img" style="background:url('projet/Freela.png') center/cover no-repeat"></div>
+            <div class="pf-carousel-card__info">
+              <span class="pf-carousel-card__cat">WordPress Development</span>
+              <h4 class="pf-carousel-card__title">Overture' – Digital Software Agency</h4>
+              <span class="pf-carousel-card__arrow">→</span>
+            </div>
+          </a>
+          <a href="portfolio.html" class="pf-carousel-card">
+            <div class="pf-carousel-card__img" style="background:url('projet/poshub.png') center/cover no-repeat"></div>
+            <div class="pf-carousel-card__info">
+              <span class="pf-carousel-card__cat">React & Next.js</span>
+              <h4 class="pf-carousel-card__title">Global Sky – Travel & Visa Agency</h4>
+              <span class="pf-carousel-card__arrow">→</span>
+            </div>
+          </a>
+          <!-- duplicates for infinite loop -->
+          <a href="portfolio.html" class="pf-carousel-card" aria-hidden="true">
+            <div class="pf-carousel-card__img" style="background:url('projet/lank.png') center/cover no-repeat"></div>
+            <div class="pf-carousel-card__info">
+              <span class="pf-carousel-card__cat">WordPress Development</span>
+              <h4 class="pf-carousel-card__title">Michelmores – Law Firm Advisor Agency</h4>
+              <span class="pf-carousel-card__arrow">→</span>
+            </div>
+          </a>
+          <a href="portfolio.html" class="pf-carousel-card" aria-hidden="true">
+            <div class="pf-carousel-card__img" style="background:url('projet/Match_Work.png') center/cover no-repeat"></div>
+            <div class="pf-carousel-card__info">
+              <span class="pf-carousel-card__cat">UI/UX Design</span>
+              <h4 class="pf-carousel-card__title">Exton Advisor – Law Firm Agency</h4>
+              <span class="pf-carousel-card__arrow">→</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="pf-carousel-dots" id="pfDots"></div>
+
+      <div class="pf-carousel-footer fade-up">
+        <a href="portfolio.html" class="btn btn--primary btn--lg">Voir tous les projets →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       WHO WE ARE
+  ═══════════════════════════════════════ -->
+  <section class="section who-section">
+    <div class="container who__inner">
+      <div class="who__text fade-up">
+        <span class="badge">REVIVAL</span>
+        <h2 class="section__title split-text">Construisons ensemble votre écosystème 
+digital performant.</h2>
+        <p>Nous développons bien plus que des applications : nous construisons un écosystème intelligent qui connecte vos services, automatise vos opérations et optimise chaque interaction.</p>
+        <a href="about.html" class="btn btn--outline">En savoir plus →</a>
+      </div>
+      <div class="who__img fade-up delay-2">
+        <img src="logo/about.jpg" alt="L'équipe Revival" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       STATS BAND
+  ═══════════════════════════════════════ -->
+  <section class="stats-band">
+    <div class="container">
+      <div class="stats-band__grid">
+        <div class="stats-band__item fade-up">
+          <div class="stats-band__num-wrap">
+            <span class="stats-band__num counter" data-target="21">0</span><span class="stats-band__suf">+</span>
+          </div>
+          <span class="stats-band__label">Projets livrés</span>
+        </div>
+        <div class="stats-band__divider"></div>
+        <div class="stats-band__item fade-up delay-1">
+          <div class="stats-band__num-wrap">
+            <span class="stats-band__num counter" data-target="3">0</span><span class="stats-band__suf">ans</span>
+          </div>
+          <span class="stats-band__label">D'expérience</span>
+        </div>
+        <div class="stats-band__divider"></div>
+        <div class="stats-band__item fade-up delay-2">
+          <div class="stats-band__num-wrap">
+            <span class="stats-band__num counter" data-target="98">0</span><span class="stats-band__suf">%</span>
+          </div>
+          <span class="stats-band__label">Clients satisfaits</span>
+        </div>
+        <div class="stats-band__divider"></div>
+        <div class="stats-band__item fade-up delay-3">
+          <div class="stats-band__num-wrap">
+            <span class="stats-band__num counter" data-target="30">0</span><span class="stats-band__suf">+</span>
+          </div>
+          <span class="stats-band__label">Experts dédiés</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       ÉCOSYSTÈME REVIVAL
+  ═══════════════════════════════════════ -->
+  <section class="section ecosystem-section" id="ecosystem">
+    <div class="container">
+      <div class="ecosystem__inner">
+        <div class="ecosystem__visual fade-up">
+          <div class="ecosystem__img-wrap">
+            <div class="ecosystem__img-glow"></div>
+            <div class="ecosystem__img-grid">
+              <div class="eco-node eco-node--center eco-node--logo">
+                <img src="logo/logo1.png" alt="Revival Logo" class="eco-logo-spin" />
+              </div>
+              <div class="eco-node eco-node--1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>Web</span>
+              </div>
+              <div class="eco-node eco-node--2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                <span>Mobile</span>
+              </div>
+              <div class="eco-node eco-node--3">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                <span>Auto</span>
+              </div>
+              <div class="eco-node eco-node--4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+                <span>SaaS</span>
+              </div>
+              <div class="eco-node eco-node--5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Cloud</span>
+              </div>
+              <div class="eco-node eco-node--6">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                <span>ERP</span>
+              </div>
+            </div>
+            <svg class="eco-orbits" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(0,255,255,0.12)" stroke-width="1" stroke-dasharray="6 6"/>
+              <circle cx="200" cy="200" r="170" fill="none" stroke="rgba(3,81,148,0.15)" stroke-width="1" stroke-dasharray="4 8"/>
+            </svg>
+          </div>
+        </div>
+        <div class="ecosystem__content fade-up delay-2">
+          <span class="badge badge--accent">L'écosystème Revival</span>
+          <h2 class="ecosystem__title">Une plateforme unifiée pour transformer votre entreprise</h2>
+          <p class="ecosystem__desc">Nous concevons et déployons des applications performantes pour aider les entreprises à automatiser leurs services, améliorer leur gestion et accélérer leur croissance.</p>
+          <div class="ecosystem__pillars">
+            <div class="eco-pillar">
+              <div class="eco-pillar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <div>
+                <strong>Automatisation intelligente</strong>
+                <p>Éliminez les tâches répétitives et libérez vos équipes pour l'essentiel.</p>
+              </div>
+            </div>
+            <div class="eco-pillar">
+              <div class="eco-pillar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              </div>
+              <div>
+                <strong>Gestion centralisée</strong>
+                <p>Toutes vos opérations dans un seul tableau de bord intégré.</p>
+              </div>
+            </div>
+            <div class="eco-pillar">
+              <div class="eco-pillar__icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              </div>
+              <div>
+                <strong>Croissance accélérée</strong>
+                <p>Des solutions scalables qui évoluent avec votre ambition.</p>
+              </div>
+            </div>
+          </div>
+          <div class="ecosystem__actions">
+            <a href="solutions.html" class="btn btn--primary">Découvrir nos solutions →</a>
+            <a href="contact.html" class="btn btn--outline-dark">Parler à un expert</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       YOUTUBE
+  ═══════════════════════════════════════ -->
+  <section class="youtube-banner" id="youtube">
+    <div class="youtube-banner__bg">
+      <img src="logo/about.jpg" alt="Revival équipe" />
+      <div class="youtube-banner__overlay"></div>
+    </div>
+    <div class="youtube-banner__play-center">
+      <a href="https://www.youtube.com/@RevivalAgency" target="_blank" rel="noopener noreferrer" class="yt-play-circle" aria-label="Regarder sur YouTube">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M8 5v14l11-7z"/></svg>
+      </a>
+    </div>
+    <div class="container youtube-banner__inner fade-up">
+      <div class="youtube-banner__content">
+        <span class="youtube-banner__badge">À PROPOS DE NOTRE ENTREPRISE</span>
+        <h2 class="youtube-banner__title">Consultez nos contenus YouTube pour mieux comprendre nos services et notre fonctionnement.</h2>
+        <a href="https://www.youtube.com/@RevivalAgency" target="_blank" rel="noopener noreferrer" class="btn-watch-video">
+          <span class="btn-watch-video__text">
+            <span>WATCH</span>
+            <span>FULL VIDEO</span>
+          </span>
+          <span class="btn-watch-video__play">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FOLLOW US
+  ═══════════════════════════════════════ -->
+  <section class="section follow-section" id="follow">
+    <div class="container">
+      <div class="follow-section__inner">
+        <div class="follow-section__content fade-up">
+          <span class="badge">Réseaux sociaux</span>
+          <h2 class="follow-section__title">Follow us</h2>
+          <p class="follow-section__desc">Retrouvez-nous sur nos réseaux sociaux pour suivre l'évolution de notre entreprise, nos activités et nos innovations.</p>
+          <div class="follow-icons">
+            <a href="#" target="_blank" rel="noopener noreferrer" class="follow-icon follow-icon--fb" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="follow-icon follow-icon--ig" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="follow-icon follow-icon--li" aria-label="LinkedIn">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@RevivalAgency" target="_blank" rel="noopener noreferrer" class="follow-icon follow-icon--yt" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="follow-icon follow-icon--tw" aria-label="X / Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+        <div class="follow-section__visual fade-up delay-2">
+          <div class="follow-img-wrap">
+            <img src="logo/rx.jpg" alt="Suivez-nous sur les réseaux sociaux" />
+            <div class="follow-img-badge">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              <span>Rejoignez notre communauté</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       TESTIMONIALS
+  ═══════════════════════════════════════ -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section__header fade-up">
+        <span class="badge">Témoignages</span>
+        <h2 class="section__title">Ce que disent nos clients</h2>
+        <p class="section__desc">Des entreprises de toutes tailles nous font confiance pour transformer leur présence digitale.</p>
+      </div>
+
+      <!-- Stats row -->
+      <div class="testi-stats fade-up delay-1">
+        <div class="testi-stat">
+          <span class="testi-stat__num"><span class="counter" data-target="98">0</span>%</span>
+          <span class="testi-stat__label">Satisfaction client</span>
+        </div>
+        <div class="testi-stat__divider"></div>
+        <div class="testi-stat">
+          <span class="testi-stat__num"><span class="counter" data-target="6">0</span>K+</span>
+          <span class="testi-stat__label">Clients dans le monde</span>
+        </div>
+        <div class="testi-stat__divider"></div>
+        <div class="testi-stat">
+          <span class="testi-stat__num"><span class="counter" data-target="21">0</span>+</span>
+          <span class="testi-stat__label">Projets livrés</span>
+        </div>
+        <div class="testi-stat__divider"></div>
+        <div class="testi-stat">
+          <span class="testi-stat__num">★ 4.9</span>
+          <span class="testi-stat__label">Note moyenne</span>
+        </div>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="testi-grid fade-up delay-2">
+        <div class="testi-card-new testi-card-new--featured">
+          <div class="testi-card-new__quote">"</div>
+          <div class="testi-card-new__stars">★★★★★</div>
+          <p class="testi-card-new__text">Revival a transformé notre gestion RH. L'application est intuitive, rapide et a réduit notre charge administrative de 65%. Un partenaire de confiance que je recommande sans hésitation.</p>
+          <div class="testi-card-new__author">
+            <div class="testi-card-new__avatar" style="background:linear-gradient(135deg,#035194,#76d0ec)">ML</div>
+            <div class="testi-card-new__info">
+              <strong>Marie Laurent</strong>
+              <span>DRH, Groupe Nexia</span>
+            </div>
+            <div class="testi-card-new__badge">Client vérifié ✓</div>
+          </div>
+        </div>
+
+        <div class="testi-card-new">
+          <div class="testi-card-new__quote">"</div>
+          <div class="testi-card-new__stars">★★★★★</div>
+          <p class="testi-card-new__text">Notre boutique en ligne a vu ses conversions augmenter de 120% après le redesign. L'équipe est réactive, professionnelle et vraiment à l'écoute.</p>
+          <div class="testi-card-new__author">
+            <div class="testi-card-new__avatar" style="background:linear-gradient(135deg,#38619c,#76d0ec)">PD</div>
+            <div class="testi-card-new__info">
+              <strong>Pierre Dubois</strong>
+              <span>CEO, LuxeShop</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card-new">
+          <div class="testi-card-new__quote">"</div>
+          <div class="testi-card-new__stars">★★★★★</div>
+          <p class="testi-card-new__text">Le dashboard analytics nous donne une visibilité en temps réel sur nos KPIs. Indispensable pour nos décisions stratégiques au quotidien.</p>
+          <div class="testi-card-new__author">
+            <div class="testi-card-new__avatar" style="background:linear-gradient(135deg,#76d0ec,#035194)">SC</div>
+            <div class="testi-card-new__info">
+              <strong>Sarah Chen</strong>
+              <span>COO, DataFlow Inc.</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card-new">
+          <div class="testi-card-new__quote">"</div>
+          <div class="testi-card-new__stars">★★★★★</div>
+          <p class="testi-card-new__text">Nous avons collaboré sur notre site corporate et un projet CRM. Très satisfaits de leur travail, leur professionnalisme et leur réactivité.</p>
+          <div class="testi-card-new__author">
+            <div class="testi-card-new__avatar" style="background:linear-gradient(135deg,#035194,#38619c)">KH</div>
+            <div class="testi-card-new__info">
+              <strong>Karim Hassan</strong>
+              <span>Directeur, Nexzen Solutions</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card-new">
+          <div class="testi-card-new__quote">"</div>
+          <div class="testi-card-new__stars">★★★★★</div>
+          <p class="testi-card-new__text">Une équipe exceptionnelle qui a su comprendre nos besoins métier et livrer une solution sur mesure en un temps record. Bravo Revival !</p>
+          <div class="testi-card-new__author">
+            <div class="testi-card-new__avatar" style="background:linear-gradient(135deg,#019cd6,#001860)">AM</div>
+            <div class="testi-card-new__info">
+              <strong>Amina Mbaye</strong>
+              <span>Fondatrice, AfriTech Hub</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logos clients -->
+      <div class="testi-logos fade-up delay-3">
+        <span class="testi-logos__label">Ils nous font confiance</span>
+        <div class="testi-logos__track">
+          <div class="testi-logo-item">Groupe Nexia</div>
+          <div class="testi-logo-item">LuxeShop</div>
+          <div class="testi-logo-item">DataFlow Inc.</div>
+          <div class="testi-logo-item">Nexzen Solutions</div>
+          <div class="testi-logo-item">AfriTech Hub</div>
+          <div class="testi-logo-item">Groupe Nexia</div>
+          <div class="testi-logo-item">LuxeShop</div>
+          <div class="testi-logo-item">DataFlow Inc.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       FAQ
+  ═══════════════════════════════════════ -->
+  <section class="section section--light faq-section">
+    <div class="container">
+      <div class="faq__inner">
+        <div class="faq__left fade-up">
+          <span class="badge">FAQ</span>
+          <h2 class="section__title">Questions fréquentes</h2>
+          <p>Vous ne trouvez pas votre réponse ? Contactez-nous directement.</p>
+          <a href="contact.html" class="btn btn--primary">Nous contacter</a>
+        </div>
+        <div class="faq__right fade-up delay-2">
+          <div class="faq-item">
+            <button class="faq-q">TechCorp peut-il gérer des applications à grande échelle ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Oui. TechCorp conçoit et développe des architectures scalables capables de supporter un trafic élevé, des workflows complexes et des exigences de performance au niveau entreprise.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Proposez-vous des partenariats à long terme ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Absolument. Nous privilégions les relations durables avec nos clients. Nous proposons des contrats de maintenance, de support et d'évolution continue pour accompagner votre croissance.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Quels services TechCorp propose-t-il ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Nous couvrons le développement web et mobile, les applications SaaS, l'automatisation, le conseil stratégique, le design UI/UX, la sécurité cloud et les agents IA.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Quel est le délai typique d'un projet ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Cela dépend de la complexité. Un MVP peut être livré en 4 à 8 semaines. Un projet complet prend généralement 3 à 6 mois. Nous établissons un planning précis lors de la phase de découverte.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Un support post-lancement est-il disponible ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Oui. Nous proposons des forfaits de maintenance et support post-lancement incluant corrections de bugs, mises à jour de sécurité et évolutions fonctionnelles.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q">Comment est déterminé le prix d'un projet ?<span class="faq-icon">+</span></button>
+            <div class="faq-a">Le prix est basé sur la complexité, les fonctionnalités requises et le délai souhaité. Nous proposons des devis transparents après une consultation gratuite de 30 minutes.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════
+       CTA FINAL
+  ═══════════════════════════════════════ -->
+  <section class="cta-final fade-up">
+    <div class="cta-final__bg">
+      <div class="blob blob--1"></div>
+      <div class="blob blob--2"></div>
+      <div class="grid-lines"></div>
+    </div>
+    <div class="container cta-final__inner">
+      <div class="cta-final__text">
+        <span class="badge badge--light">Collaborons ensemble</span>
+        <h2>Construisons quelque chose<br/><span class="gradient-text">d'exceptionnel</span></h2>
+        <p>Consultation gratuite de 30 minutes. Aucun engagement.</p>
+      </div>
+      <div class="cta-final__actions">
+        <a href="contact.html" class="btn btn--white">
+          <span>Démarrer un projet</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="portfolio.html" class="btn btn--ghost">Voir le portfolio</a>
+      </div>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+  <script src="components.js"></script>
+  <script src="main.js"></script>
+  <script>
+    // Redirect to splash on first visit of the session
+    if (!sessionStorage.getItem('splashSeen')) {
+      sessionStorage.setItem('splashSeen', '1');
+      window.location.replace('splash.html');
+    }
+  </script>
+</body>
+</html>

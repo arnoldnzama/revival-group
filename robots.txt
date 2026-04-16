@@ -1,0 +1,28 @@
+# ═══════════════════════════════════════════
+# robots.txt — Revival Agency
+# https://revival-business.com
+# ═══════════════════════════════════════════
+
+User-agent: *
+Allow: /
+
+# Bloquer les fichiers sensibles
+Disallow: /config/
+Disallow: /.env
+Disallow: /database.sql
+Disallow: /send_mail.php
+Disallow: /application-submit.php
+Disallow: /video_interactions.php
+
+# Autoriser les ressources statiques
+Allow: /logo/
+Allow: /projet/
+Allow: /articles/
+Allow: /videos/
+Allow: /ico/
+
+# Sitemap
+Sitemap: https://revival-business.com/sitemap.xml
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1

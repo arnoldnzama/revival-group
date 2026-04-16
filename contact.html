@@ -3,28 +3,69 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact — Revival</title>
+
+  <!-- ═══ SEO PRIMARY ═══ -->
+  <title>Contactez Revival — Consultation Gratuite 30min | Agence Digitale</title>
+  <meta name="description" content="Contactez Revival pour votre projet digital. Consultation gratuite de 30 minutes avec un expert. Développement web, mobile, IA et transformation digitale." />
+  <meta name="keywords" content="contact agence digitale, consultation gratuite développement web, devis application mobile, contacter Revival, projet digital Afrique Europe" />
+  <meta name="author" content="Revival Agency" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://revival-business.com/contact.html" />
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://revival-business.com/contact.html" />
+  <meta property="og:title" content="Contactez Revival — Consultation Gratuite 30min" />
+  <meta property="og:description" content="Discutez de votre projet avec un expert Revival. Consultation gratuite de 30 minutes. Réponse sous 24h." />
+  <meta property="og:image" content="https://revival-business.com/logo/banner.png" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Revival Agency" />
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@groupe85249" />
+  <meta name="twitter:title" content="Contactez Revival — Consultation Gratuite 30min" />
+  <meta name="twitter:description" content="Parlez à un expert Revival pour votre projet digital. Consultation gratuite, réponse sous 24h." />
+  <meta name="twitter:image" content="https://revival-business.com/logo/banner.png" />
+
+  <!-- ═══ SCHEMA.ORG — ContactPage ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Revival Agency",
+    "url": "https://revival-business.com/contact.html",
+    "description": "Contactez Revival Agency pour votre projet de développement web, mobile ou transformation digitale.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Revival Agency",
+      "url": "https://revival-business.com",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "availableLanguage": "French"
+      }
+    }
+  }
+  </script>
+
   <link rel="icon" type="image/x-icon" href="ico/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
   <div id="header-placeholder"></div>
 
   <!-- PAGE HERO -->
-  <section class="page-hero page-hero--sm">
-    <div class="page-hero__bg">
-      <div class="blob blob--1"></div>
-      <div class="blob blob--2"></div>
-      <div class="grid-lines"></div>
-    </div>
-    <div class="container page-hero__inner fade-up">
-      <span class="badge">Contact</span>
-      <h1>Parlons de<br/><span class="gradient-text">votre projet</span></h1>
-      <p>Remplissez le formulaire ou contactez-nous directement. Nous répondons sous 24h.</p>
+  <section style="min-height:44vh;background:radial-gradient(ellipse at 70% 0%,#0a2a6e 0%,#050d2a 55%,#000d1f 100%);display:flex;align-items:center;padding:140px 0 70px;position:relative;overflow:hidden;">
+    <div class="hero__bg"><div class="blob blob--1"></div><div class="blob blob--2"></div><div class="grid-lines"></div></div>
+    <div class="container fade-up" style="position:relative;z-index:1;text-align:center;color:#fff">
+      <span class="badge badge--light">Contact</span>
+      <h1 style="font-size:clamp(36px,5vw,62px);margin:12px 0 20px;letter-spacing:-.03em">Parlons de <span class="gradient-text">votre projet</span></h1>
+      <p style="font-size:17px;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto">Remplissez le formulaire ou contactez-nous directement. Nous répondons sous 24h.</p>
     </div>
   </section>
 
@@ -52,7 +93,7 @@
               </div>
               <div>
                 <strong>Téléphone</strong>
-                <a href="tel:+33123456789">+243 xxx xxx xxx</a>
+                <a href="tel:+33123456789">+243 860 275 282</a>
               </div>
             </div>
             <div class="contact-item">
@@ -126,11 +167,13 @@
               <label for="message">Message</label>
               <textarea id="message" name="message" rows="5" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
             </div>
-            <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center;">
+            <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center; display:flex; align-items:center; gap:8px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
               Envoyer le message
             </button>
-            <div class="form-success" id="formSuccess">
-              ✅ Message envoyé ! Nous vous répondrons sous 24h.
+            <div id="formSuccess" style="display:none; margin-top:16px; padding:16px 20px; background:#f0fdf4; border:1px solid #86efac; border-radius:10px; color:#166534; font-size:14px; align-items:center; gap:10px;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              Message envoyé ! Nous vous répondrons sous 24h.
             </div>
           </form>
         </div>
@@ -139,13 +182,46 @@
   </section>
 
   <div id="footer-placeholder"></div>
-  <script src="components.js"></script>
+  <script src="js/seo.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      document.getElementById('formSuccess').style.display = 'block';
-      this.reset();
-      setTimeout(() => { document.getElementById('formSuccess').style.display = 'none'; }, 5000);
+
+      const btn = this.querySelector('button[type="submit"]');
+      const originalHTML = btn.innerHTML;
+      btn.disabled = true;
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Envoi en cours…';
+
+      const data = {
+        type: 'contact',
+        firstName: this.firstName.value,
+        lastName: this.lastName.value,
+        email: this.email.value,
+        company: this.company.value,
+        subject: this.subject.value,
+        message: this.message.value
+      };
+
+      fetch('php/send_mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(r => r.json())
+      .then(res => {
+        const successEl = document.getElementById('formSuccess');
+        successEl.style.display = 'flex';
+        this.reset();
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+        setTimeout(() => { successEl.style.display = 'none'; }, 6000);
+      })
+      .catch(() => {
+        alert('Une erreur est survenue. Veuillez réessayer.');
+        btn.disabled = false;
+        btn.innerHTML = originalHTML;
+      });
     });
   </script>
 </body>

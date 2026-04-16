@@ -3,28 +3,66 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>À propos — Revival</title>
+
+  <!-- ═══ SEO PRIMARY ═══ -->
+  <title>À propos de Revival — Agence Digitale fondée en 2016 | Afrique & Europe</title>
+  <meta name="description" content="Découvrez Revival : agence digitale fondée en 2016, 21+ projets livrés, 10 pays couverts. Expertise en développement web, mobile, IA et transformation digitale." />
+  <meta name="keywords" content="agence digitale Kinshasa, Revival agency, transformation digitale Afrique, développement web mobile, équipe tech francophone" />
+  <meta name="author" content="Revival Agency" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://revival-business/about.html" />
+
+  <!-- ═══ OPEN GRAPH ═══ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://revival-business/about.html" />
+  <meta property="og:title" content="À propos de Revival — Agence Digitale fondée en 2016" />
+  <meta property="og:description" content="21+ projets livrés, 98% clients satisfaits, présence dans 10 pays. Revival accompagne les entreprises africaines et européennes dans leur transformation digitale." />
+  <meta property="og:image" content="https://revival-business/logo/about.jpg" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content="Revival Agency" />
+
+  <!-- ═══ TWITTER CARD ═══ -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@groupe85249" />
+  <meta name="twitter:title" content="À propos de Revival — Agence Digitale fondée en 2016" />
+  <meta name="twitter:description" content="Fondée en 2016, Revival combine expertise technique et vision stratégique pour livrer des solutions digitales qui font la différence." />
+  <meta name="twitter:image" content="https://revival-business/logo/about.jpg" />
+
+  <!-- ═══ SCHEMA.ORG — AboutPage ═══ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "À propos de Revival Agency",
+    "url": "https://revival-business/about.html",
+    "description": "Agence digitale fondée en 2016, spécialisée en développement web, mobile, SaaS et transformation digitale pour l'Afrique et l'Europe.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Revival Agency",
+      "logo": "https://revival-business/logo/logo.png",
+      "foundingDate": "2016",
+      "numberOfEmployees": { "@type": "QuantitativeValue", "value": 30 }
+    }
+  }
+  </script>
+
   <link rel="icon" type="image/x-icon" href="ico/favicon.ico" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
   <div id="header-placeholder"></div>
 
   <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero__bg">
-      <div class="blob blob--1"></div>
-      <div class="blob blob--2"></div>
-      <div class="grid-lines"></div>
-    </div>
-    <div class="container page-hero__inner fade-up">
-      <span class="badge">À propos</span>
-      <h1>Une équipe passionnée<br/><span class="gradient-text">au service de votre croissance</span></h1>
-      <p>Fondée en 2016, Revival combine expertise technique et vision stratégique pour livrer des solutions qui font vraiment la différence.</p>
+  <section style="min-height:44vh;background:radial-gradient(ellipse at 70% 0%,#0a2a6e 0%,#050d2a 55%,#000d1f 100%);display:flex;align-items:center;padding:140px 0 70px;position:relative;overflow:hidden;">
+    <div class="hero__bg"><div class="blob blob--1"></div><div class="blob blob--2"></div><div class="grid-lines"></div></div>
+    <div class="container fade-up" style="position:relative;z-index:1;text-align:center;color:#fff">
+      <span class="badge badge--light">À propos</span>
+      <h1 style="font-size:clamp(36px,5vw,62px);margin:12px 0 20px;letter-spacing:-.03em">Une équipe passionnée<br/><span class="gradient-text">au service de votre croissance</span></h1>
+      <p style="font-size:17px;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto">Fondée en 2016, Revival combine expertise technique et vision stratégique pour livrer des solutions qui font vraiment la différence.</p>
     </div>
   </section>
 
@@ -40,11 +78,11 @@
         </div>
         <div class="about-mission__stats">
           <div class="big-stat fade-up delay-1">
-            <span class="big-stat__num">150+</span>
+            <span class="big-stat__num">21+</span>
             <span class="big-stat__label">Projets livrés</span>
           </div>
           <div class="big-stat fade-up delay-2">
-            <span class="big-stat__num">30+</span>
+            <span class="big-stat__num">10+</span>
             <span class="big-stat__label">Experts dédiés</span>
           </div>
           <div class="big-stat fade-up delay-3">
@@ -73,7 +111,7 @@
           <div class="timeline-full__dot"></div>
           <div class="timeline-full__card">
             <h3>Fondation</h3>
-            <p>Création de Revival avec une équipe de 5 développeurs passionnés à Paris. Premier client livré en 3 mois.</p>
+            <p>Création de Revival avec une équipe de 5 développeurs passionnés à Kinshasa. Premier client livré en 3 mois.</p>
           </div>
         </div>
         <div class="timeline-full__item fade-up delay-2">
@@ -220,6 +258,8 @@
   </section>
 
   <div id="footer-placeholder"></div>
-  <script src="components.js"></script>
+  <script src="js/seo.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -8,23 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
   <div id="header-placeholder"></div>
 
   <!-- PAGE HERO -->
-  <section class="page-hero">
-    <div class="page-hero__bg">
-      <div class="blob blob--1"></div>
-      <div class="blob blob--2"></div>
-      <div class="grid-lines"></div>
-    </div>
-    <div class="container page-hero__inner fade-up">
-      <span class="badge">Nos produits</span>
-      <h1>Des outils prêts à l'emploi<br/><span class="gradient-text">pour accélérer vos projets</span></h1>
-      <p>Templates, thèmes et applications clés en main. Gagnez du temps et lancez votre projet avec une base solide et professionnelle.</p>
+  <section style="min-height:44vh;background:radial-gradient(ellipse at 70% 0%,#0a2a6e 0%,#050d2a 55%,#000d1f 100%);display:flex;align-items:center;padding:140px 0 70px;position:relative;overflow:hidden;">
+    <div class="hero__bg"><div class="blob blob--1"></div><div class="blob blob--2"></div><div class="grid-lines"></div></div>
+    <div class="container fade-up" style="position:relative;z-index:1;text-align:center;color:#fff">
+      <span class="badge badge--light">Nos produits</span>
+      <h1 style="font-size:clamp(36px,5vw,62px);margin:12px 0 20px;letter-spacing:-.03em">Des outils <span class="gradient-text">prêts à l'emploi</span><br/>pour accélérer vos projets</h1>
+      <p style="font-size:17px;color:rgba(255,255,255,.6);max-width:520px;margin:0 auto">Templates, thèmes et applications clés en main. Gagnez du temps et lancez votre projet avec une base solide et professionnelle.</p>
     </div>
   </section>
 
@@ -360,6 +356,7 @@
   </section>
 
   <div id="footer-placeholder"></div>
-  <script src="components.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

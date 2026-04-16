@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS video_comments (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     deleted_at DATETIME DEFAULT NULL COMMENT 'Date de suppression (soft delete)',
-    approved_at DATETIME DEFAULT NULL COMMENT 'Date d\'approbation',
+    approved_at DATETIME DEFAULT NULL COMMENT "Date d'approbation",
 
     FOREIGN KEY (video_id) REFERENCES videos(id) ON DELETE CASCADE,
     FOREIGN KEY (parent_comment_id) REFERENCES video_comments(id) ON DELETE SET NULL,
@@ -123,7 +123,7 @@ CREATE TABLE IF NOT EXISTS video_analytics (
 
 CREATE TABLE IF NOT EXISTS video_interactions_log (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    type ENUM('like_added', 'like_removed', 'comment_added', 'comment_deleted', 'comment_approved', 'view') DEFAULT 'view' COMMENT 'Type d\'interaction',
+    type ENUM('like_added', 'like_removed', 'comment_added', 'comment_deleted', 'comment_approved', 'view') DEFAULT 'view' COMMENT "Type d'interaction",
     video_id VARCHAR(11) DEFAULT NULL COMMENT 'ID vidéo YouTube',
     identifier_hash VARCHAR(64) NOT NULL COMMENT 'Hash IP+timestamp',
     ip VARCHAR(45) NOT NULL COMMENT 'Adresse IP source',
@@ -164,8 +164,8 @@ CREATE TABLE IF NOT EXISTS video_moderation_queue (
 
 CREATE TABLE IF NOT EXISTS video_subscribers (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    email VARCHAR(255) NOT NULL COMMENT 'Email d\'abonnement',
-    video_id INT UNSIGNED DEFAULT NULL COMMENT 'NULL = toutes les vidéos',
+    email VARCHAR(255) NOT NULL COMMENT "Email d'abonnement",
+    video_id INT UNSIGNED DEFAULT NULL COMMENT "NULL = toutes les vidéos",
     notify_on_comment BOOLEAN DEFAULT 1,
     notify_on_reply BOOLEAN DEFAULT 1,
     is_confirmed BOOLEAN DEFAULT 0,
@@ -223,6 +223,6 @@ ORDER BY vc.created_at DESC;
 
 INSERT INTO videos (youtube_id, title, description, is_featured)
 VALUES
-    ('dJn4ugANCLg', 'FACILITEZ VOUS LA TACHE AVEC LA POSHUB', 'Solution intelligente de gestion d\'entreprise', 1),
-    ('V0iWwb_AYM8', 'PHARMA HUB - Solution digitale pharmacie', 'Solution complète pour pharmacies', 1)
+    ('dJn4ugANCLg', 'FACILITEZ VOUS LA TACHE AVEC LA POSHUB', "Solution intelligente de gestion d'entreprise", 1),
+    ('V0iWwb_AYM8', 'PHARMA HUB - Solution digitale pharmacie', "Solution complète pour pharmacies", 1)
 ON DUPLICATE KEY UPDATE updated_at = NOW();

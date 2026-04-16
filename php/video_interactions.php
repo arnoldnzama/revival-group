@@ -25,6 +25,7 @@
 // ═════════════════════════════════════════════════════════════════════════════
 
 header('Content-Type: application/json; charset=utf-8');
+header('Access-Control-Allow-Origin: https://revival-business.com');
 header('Access-Control-Allow-Methods: GET, POST, OPTIONS, DELETE');
 header('Access-Control-Allow-Headers: Content-Type, X-Requested-With');
 header('X-Content-Type-Options: nosniff');
@@ -37,69 +38,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Chargement de l'environnement
-// ─────────────────────────────────────────────────────────────────────────────
-function load_env_config() {
-    $root = dirname(__DIR__);
-    $paths = [
-        $root . '/.env.local',
-        $root . '/.env',
-        __DIR__ . '/.env.local',
-        __DIR__ . '/.env',
-    ];
-
-    foreach ($paths as $path) {
-        if (is_file($path) && is_readable($path)) {
-            $env = parse_ini_file($path, false, INI_SCANNER_RAW);
-            if (is_array($env)) {
-                return $env;
-            }
-        }
-    }
-
-    return [];
-}
-
-function env_value(array $env, string $key, $default = null) {
-    if (array_key_exists($key, $env) && $env[$key] !== '') {
-        return $env[$key];
-    }
-
-    $serverValue = $_SERVER[$key] ?? getenv($key);
-    if ($serverValue !== false && $serverValue !== null && $serverValue !== '') {
-        return $serverValue;
-    }
-
-    return $default;
-}
-
-$env = load_env_config();
-$allowedOrigin = rtrim((string)env_value($env, 'APP_ORIGIN', 'https://revival-business.com'), '/');
-header('Access-Control-Allow-Origin: ' . $allowedOrigin);
-
-// ─────────────────────────────────────────────────────────────────────────────
 // Configuration base de données
 // ─────────────────────────────────────────────────────────────────────────────
-define('DB_HOST',     (string)env_value($env, 'DB_HOST', 'localhost'));
-define('DB_PORT',     (int)env_value($env, 'DB_PORT', 3306));
-define('DB_NAME',     (string)env_value($env, 'DB_NAME', 'revival'));
-define('DB_USER',     (string)env_value($env, 'DB_USER', 'root'));
-define('DB_PASS',     (string)env_value($env, 'DB_PASS', ''));
-define('DB_CHARSET',  (string)env_value($env, 'DB_CHARSET', 'utf8mb4'));
+define('DB_HOST',     'localhost');
+define('DB_NAME',     'emergen1_revival');  // À remplacer par votre BD réelle
+define('DB_USER',     'emergen1_revival');  // À remplacer par votre user DB
+define('DB_PASS',     'F@mille123');       // Mot de passe BD
+define('DB_CHARSET',  'utf8mb4');
 
 // Configuration des logs et sécurité
-$logDir = (string)env_value($env, 'LOG_DIR', './logs');
-if (!str_starts_with($logDir, '/') && !preg_match('/^[A-Za-z]:[\\\\\\/]/', $logDir)) {
-    $logDir = __DIR__ . '/' . ltrim($logDir, './');
-}
-
-define('LOGS_DIR',           rtrim($logDir, '/'));
+define('LOGS_DIR',           __DIR__ . '/logs');
 define('LOG_FILE',           LOGS_DIR . '/video_interactions.log');
-define('MAX_COMMENT_SIZE',   (int)env_value($env, 'MAX_COMMENT_LENGTH', 500));
-define('MAX_AUTHOR_SIZE',    (int)env_value($env, 'MAX_AUTHOR_LENGTH', 100));
-define('RATE_LIMIT_MINUTES', (int)env_value($env, 'RATE_LIMIT_MINUTES', 5));
-define('MAX_LIKES_PER_IP',   (int)env_value($env, 'RATE_LIMIT_LIKES_PER_IP', 10));
-define('ENABLE_DEBUG',       filter_var(env_value($env, 'APP_DEBUG', false), FILTER_VALIDATE_BOOLEAN));
+define('MAX_COMMENT_SIZE',   500);
+define('MAX_AUTHOR_SIZE',    100);
+define('RATE_LIMIT_MINUTES', 5);
+define('MAX_LIKES_PER_IP',   10);
+define('ENABLE_DEBUG',       false);
 
 // ═════════════════════════════════════════════════════════════════════════════
 // 2. CLASSE DATABASE (Singleton Pattern)
@@ -112,9 +66,8 @@ class Database {
     private function __construct() {
         try {
             $dsn = sprintf(
-                'mysql:host=%s;port=%d;dbname=%s;charset=%s',
+                'mysql:host=%s;dbname=%s;charset=%s',
                 DB_HOST,
-                DB_PORT,
                 DB_NAME,
                 DB_CHARSET
             );

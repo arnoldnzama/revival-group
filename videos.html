@@ -169,27 +169,27 @@
   }
 
   // ── Charger stats ─────────────────────────────────────────
-  async function loadStats(videoId, cardKey) {
+  async function loadStats(vidId) {
     try {
-      const resV  = await fetch(`${API}?action=get_video&vid=${encodeURIComponent(videoId)}`);
+      const resV  = await fetch(`${API}?action=get_video&vid=${encodeURIComponent(vidId)}`);
       const dataV = await resV.json();
       if (dataV.success) {
-        const likeBtn = document.querySelector(`.vid-like-btn[data-key="${cardKey}"]`);
+        const likeBtn = document.querySelector(`.vid-like-btn[data-vid="${vidId}"]`);
         if (likeBtn) likeBtn.querySelector('.like-count').textContent = dataV.data.likes_count || 0;
       }
-      const resC  = await fetch(`${API}?action=get_comments&vid=${encodeURIComponent(videoId)}&limit=50`);
+      const resC  = await fetch(`${API}?action=get_comments&vid=${encodeURIComponent(vidId)}&limit=50`);
       const dataC = await resC.json();
       if (dataC.success) {
         const comments = dataC.data.comments || [];
-        const countEl  = document.querySelector(`.vid-comment-toggle[data-key="${cardKey}"] .comment-count`);
+        const countEl  = document.querySelector(`.vid-comment-toggle[data-vid="${vidId}"] .comment-count`);
         if (countEl) countEl.textContent = dataC.data.pagination.total || comments.length;
-        const list = document.querySelector(`.vid-comments-box[data-key="${cardKey}"] .vid-comments-list`);
+        const list = document.querySelector(`.vid-comments-box[data-vid="${vidId}"] .vid-comments-list`);
         if (list && comments.length) {
           list.innerHTML = '';
           comments.forEach(c => list.appendChild(renderComment(c)));
         }
       }
-    } catch(e) { console.warn('Stats non chargées pour', videoId, e); }
+    } catch(e) { console.warn('Stats non chargées pour', vidId, e); }
   }
 
   // ── Attacher les interactions après chaque rendu ──────────
@@ -209,19 +209,18 @@
     // Like
     grid.querySelectorAll('.vid-like-btn').forEach(btn => {
       btn.addEventListener('click', async () => {
-        const videoId = btn.dataset.videoId;
-        const cardKey = btn.dataset.key;
+        const vidId = btn.dataset.vid;
         btn.disabled = true;
         try {
           const res  = await fetch(`${API}?action=add_like`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ video_id: videoId })
+            body: JSON.stringify({ video_id: vidId })
           });
           const data = await res.json();
           if (data.success) {
             const liked = data.data.liked;
-            const resV  = await fetch(`${API}?action=get_video&vid=${encodeURIComponent(videoId)}`);
+            const resV  = await fetch(`${API}?action=get_video&vid=${encodeURIComponent(vidId)}`);
             const dataV = await resV.json();
             if (dataV.success) btn.querySelector('.like-count').textContent = dataV.data.likes_count;
             btn.classList.toggle('liked', liked);
@@ -238,8 +237,8 @@
     // Toggle commentaires
     grid.querySelectorAll('.vid-comment-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
-        const cardKey = btn.dataset.key;
-        const box   = grid.querySelector(`.vid-comments-box[data-key="${cardKey}"]`);
+        const vidId = btn.dataset.vid;
+        const box   = grid.querySelector(`.vid-comments-box[data-vid="${vidId}"]`);
         const open  = box.style.display !== 'none' && box.style.display !== '';
         box.style.display = open ? 'none' : 'block';
       });
@@ -249,8 +248,7 @@
     grid.querySelectorAll('.vid-comment-form').forEach(form => {
       form.addEventListener('submit', async e => {
         e.preventDefault();
-        const videoId   = form.dataset.videoId;
-        const cardKey   = form.dataset.key;
+        const vidId     = form.dataset.vid;
         const author    = form.querySelector('.vid-author-input').value.trim();
         const text      = form.querySelector('.vid-text-input').value.trim();
         if (!text) return;
@@ -261,7 +259,7 @@
           const res  = await fetch(`${API}?action=add_comment`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ video_id: videoId, author, text })
+            body: JSON.stringify({ video_id: vidId, author, text })
           });
           const data = await res.json();
           if (data.success) {
@@ -271,7 +269,7 @@
             node.scrollIntoView({ behavior:'smooth', block:'nearest' });
             form.querySelector('.vid-text-input').value   = '';
             form.querySelector('.vid-author-input').value = '';
-            const countEl = grid.querySelector(`.vid-comment-toggle[data-key="${cardKey}"] .comment-count`);
+            const countEl = grid.querySelector(`.vid-comment-toggle[data-vid="${vidId}"] .comment-count`);
             if (countEl) countEl.textContent = parseInt(countEl.textContent || 0) + 1;
           }
         } catch(e) { alert("Erreur lors de l'envoi. Réessayez."); }
@@ -281,7 +279,7 @@
     });
 
     // Charger les stats pour chaque vidéo visible
-    grid.querySelectorAll('.vid-interact').forEach(el => loadStats(el.dataset.videoId, el.dataset.key));
+    grid.querySelectorAll('.vid-interact').forEach(el => loadStats(el.dataset.vid));
   }
 
   // ── Rendu des cartes ──────────────────────────────────────
@@ -294,7 +292,7 @@
 
     grid.innerHTML = items.map((v, i) => {
       const thumbSrc = v.thumb || ('https://img.youtube.com/vi/' + v.id + '/mqdefault.jpg');
-      const cardKey  = `short-${start + i}`;
+      const vidId    = v.id + '_' + (start + i); // ID unique par carte
       return `
         <div class="vid-card" data-cat="${v.cat}" style="animation-delay:${i * 0.08}s">
           <div class="vid-card__thumb" data-yt="${v.id}" data-short="1">
@@ -303,7 +301,7 @@
             <span class="vid-card__duration">${v.duration}</span>
             <span class="vid-card__cat-badge">${catLabels[v.cat] || v.cat}</span>
           </div>
-          <div class="vid-card__body vid-interact" data-video-id="${v.id}" data-key="${cardKey}">
+          <div class="vid-card__body vid-interact" data-vid="${vidId}">
             <h3 class="vid-card__title">${v.title}</h3>
             <p class="vid-card__meta">Revival Groupe &middot; Shorts</p>
             <div class="vid-card__actions" style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:10px">
@@ -313,22 +311,22 @@
                 Voir sur YouTube
               </a>
               <!-- Like -->
-              <button class="vid-like-btn" data-video-id="${v.id}" data-key="${cardKey}"
+              <button class="vid-like-btn" data-vid="${vidId}"
                 style="display:flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid var(--border);border-radius:50px;background:#fff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
                 <span class="like-count">0</span>
               </button>
               <!-- Toggle commentaires -->
-              <button class="vid-comment-toggle" data-key="${cardKey}"
+              <button class="vid-comment-toggle" data-vid="${vidId}"
                 style="display:flex;align-items:center;gap:6px;padding:7px 14px;border:1.5px solid var(--border);border-radius:50px;background:#fff;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                 <span class="comment-count">0</span> commentaires
               </button>
             </div>
             <!-- Zone commentaires -->
-            <div class="vid-comments-box" data-key="${cardKey}" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
+            <div class="vid-comments-box" data-vid="${vidId}" style="display:none;margin-top:14px;border-top:1px solid var(--border);padding-top:14px">
               <div class="vid-comments-list" style="display:flex;flex-direction:column;gap:8px;max-height:220px;overflow-y:auto;margin-bottom:12px"></div>
-              <form class="vid-comment-form" data-video-id="${v.id}" data-key="${cardKey}" style="display:flex;flex-direction:column;gap:8px">
+              <form class="vid-comment-form" data-vid="${vidId}" style="display:flex;flex-direction:column;gap:8px">
                 <input class="vid-author-input" type="text" placeholder="Votre nom (optionnel)"
                   style="padding:8px 12px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:13px;outline:none" />
                 <textarea class="vid-text-input" rows="2" placeholder="Écrire un commentaire…" required

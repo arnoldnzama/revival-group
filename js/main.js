@@ -248,43 +248,42 @@ document.addEventListener('DOMContentLoaded', () => {
   const indDotsContainer = document.getElementById('indDots');
   let indCurrent = 0;
   let indTimer = null;
-  if (indPanels.length) {
-    // build dots
-    if (indDotsContainer) {
-      indPanels.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'ind-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', `Slide ${i + 1}`);
-        dot.addEventListener('click', () => indGoTo(i));
-        indDotsContainer.appendChild(dot);
-      });
-    }
 
-    function indGoTo(next) {
-      if (next === indCurrent) return;
-      const prev = indCurrent;
-      indCurrent = (next + indPanels.length) % indPanels.length;
+  // build dots
+  if (indDotsContainer) {
+    indPanels.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'ind-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', () => indGoTo(i));
+      indDotsContainer.appendChild(dot);
+    });
+  }
 
-      indPanels[prev].classList.remove('active');
-      indPanels[prev].classList.add('slide-out');
-      setTimeout(() => indPanels[prev].classList.remove('slide-out'), 600);
+  function indGoTo(next) {
+    if (next === indCurrent) return;
+    const prev = indCurrent;
+    indCurrent = (next + indPanels.length) % indPanels.length;
 
-      indPanels[indCurrent].classList.add('active');
-      indPanels[indCurrent].querySelectorAll('.counter').forEach(el => { delete el.dataset.counted; animateCounter(el); });
+    indPanels[prev].classList.remove('active');
+    indPanels[prev].classList.add('slide-out');
+    setTimeout(() => indPanels[prev].classList.remove('slide-out'), 600);
 
-      document.querySelectorAll('.ind-dot').forEach((d, i) => d.classList.toggle('active', i === indCurrent));
-      indResetTimer();
-    }
+    indPanels[indCurrent].classList.add('active');
+    indPanels[indCurrent].querySelectorAll('.counter').forEach(el => { delete el.dataset.counted; animateCounter(el); });
 
-    function indResetTimer() {
-      clearInterval(indTimer);
-      indTimer = setInterval(() => indGoTo(indCurrent + 1), 4500);
-    }
-
-    document.getElementById('indNext') && document.getElementById('indNext').addEventListener('click', () => indGoTo(indCurrent + 1));
-    document.getElementById('indPrev') && document.getElementById('indPrev').addEventListener('click', () => indGoTo(indCurrent - 1));
+    document.querySelectorAll('.ind-dot').forEach((d, i) => d.classList.toggle('active', i === indCurrent));
     indResetTimer();
   }
+
+  function indResetTimer() {
+    clearInterval(indTimer);
+    indTimer = setInterval(() => indGoTo(indCurrent + 1), 4500);
+  }
+
+  document.getElementById('indNext') && document.getElementById('indNext').addEventListener('click', () => indGoTo(indCurrent + 1));
+  document.getElementById('indPrev') && document.getElementById('indPrev').addEventListener('click', () => indGoTo(indCurrent - 1));
+  indResetTimer();
 
   // ── SERVICES ACCORDION ──
   document.querySelectorAll('.svc-item__head').forEach(head => {

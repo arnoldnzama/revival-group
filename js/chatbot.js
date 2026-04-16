@@ -80,7 +80,7 @@ const REVIVAL_KB = {
   // ── Vidéos & YouTube ──
   videos: {
     keywords: ["vidéo","vidéos","youtube","tutoriel","contenu","chaîne","regarder","canal"],
-    response: "Retrouvez nos contenus sur :\n\n🎬 YouTube @RevivalAgency — tutoriels, études de cas, coulisses\n🎬 YouTube @RevivalGroupeX — contenus complémentaires\n📺 Notre page Vidéos (videos.html) — démos de nos produits\n\nTypes de contenus :\n• 🎓 Tutoriels techniques (React, Laravel, etc.)\n• 📁 Études de cas projets\n• 💡 Conseils et bonnes pratiques\n• 🎬 Coulisses de l'agence\n\nAbonnez-vous pour ne rien manquer ! 🎥"
+    response: "Retrouvez nos contenus sur :\n\n🎬 YouTube — @RevivalGroupe\n📺 Notre page Vidéos (videos.html) — démos de nos produits\n\nTypes de contenus :\n• 🎓 Tutoriels techniques et démonstrations\n• 📁 Études de cas projets\n• 💡 Conseils et bonnes pratiques\n• 🎬 Coulisses de l'agence\n\nAbonnez-vous pour ne rien manquer ! 🎥"
   },
 
   // ── Secteurs / Industries ──
@@ -92,7 +92,7 @@ const REVIVAL_KB = {
   // ── Réseaux sociaux ──
   reseaux: {
     keywords: ["réseau","réseaux","facebook","instagram","linkedin","tiktok","twitter","whatsapp","x","social","communauté","suivre"],
-    response: "Retrouvez-nous sur tous nos réseaux :\n\n📘 Facebook — facebook.com/share/1MppwEQAU3\n📸 Instagram — @revivalgroup7\n💼 LinkedIn — Revival Group DRC\n🎬 YouTube — @RevivalAgency & @RevivalGroupeX\n🐦 X (Twitter) — @groupe85249\n🎵 TikTok — @revivalgroup7\n💬 WhatsApp — Canal officiel\n\nSuivez-nous pour rester informé de nos actualités, projets et innovations ! 🌐"
+    response: "Retrouvez-nous sur tous nos réseaux :\n\n📘 Facebook — Revival Group\n📸 Instagram — @revivalgroup7\n💼 LinkedIn — Revival Group DRC\n🎬 YouTube — @RevivalGroupe\n🐦 X — @groupe85249\n🎵 TikTok — @revivalgroup7\n💬 WhatsApp — Canal officiel Revival\n\nSuivez-nous pour rester informé de nos actualités, projets et innovations ! 🌐"
   },
 
   // ── Processus de travail ──

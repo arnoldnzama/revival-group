@@ -18,6 +18,8 @@
       '/solutions.html':      'Solutions',
       '/portfolio.html':      'Portfolio',
       '/partenaire.html':     'Partenaire',
+      '/politique-confidentialite.html': 'Politique de confidentialité',
+      '/conditions-partenariat.html': 'Conditions de partenariat',
       '/contact.html':        'Contact',
       '/blog.html':           'Blog',
       '/careers.html':        'Carrières',

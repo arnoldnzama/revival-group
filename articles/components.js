@@ -283,8 +283,8 @@ function renderFooter() {
         <div class="container">
           <p>© 2026 Revival. Tous droits réservés.</p>
           <div class="footer__legal">
-            <a href="#">Mentions légales</a>
-            <a href="#">Politique de confidentialité</a>
+            <a href="${base}conditions-partenariat.html">Conditions de partenariat</a>
+            <a href="${base}politique-confidentialite.html">Politique de confidentialité</a>
           </div>
         </div>
       </div>
